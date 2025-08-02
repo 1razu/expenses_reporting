@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #02441a;
+  background-color: var(--blue);
   padding: 1rem 2rem;
   width: 100%;
   gap: 1.5rem;
@@ -19,12 +19,18 @@
   padding: 0;
 }
 
-.navList li {
-  display: inline; /* Or just rely on flex */
+li {
+  display: inline;
 }
 
-.navList a {
+a {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+a:hover {
+  color: var(--cyan);
+  transform: scale(1.05);
 }

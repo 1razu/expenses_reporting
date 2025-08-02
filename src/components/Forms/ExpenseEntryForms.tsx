@@ -9,10 +9,12 @@ import styles from './ExpenseEntryForms.module.css';
 const entryMethods = {
   form: {
     name:"Form",
-    component: ExpensesEntry},
+    component: ExpensesEntry,
+    inactiveComponent:"File import"},
   file_import :{ 
     name:"File import",
-    component: ExpensesFileDrop
+    component: ExpensesFileDrop,
+    inactiveComponent:"Form"
     }
 };
 
@@ -33,9 +35,9 @@ export default function CurrentForm() {
 
     return (
     <div>
-        <div className='header'>
+        <div className={styles.header}>
             <h2>Add an expense</h2> 
-            <button className='toggle' onClick={toggleButton}> Add through {entryMethods[currentEntryMethod]["name"]}</button>
+            <button className={styles.toggle} onClick={toggleButton}> Use {entryMethods[currentEntryMethod]["inactiveComponent"]}</button>
         </div>
         <br />
         <FormComponent />

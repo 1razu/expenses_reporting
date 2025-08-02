@@ -20,16 +20,16 @@
   align-items: center;
   justify-content: center;
   cursor: default;
-  background-color: #02441ae7;
+  background-color: var(--cyan);
+  transition: background-color 0.3s ease;
 }
 
 .dropzone:hover {
   cursor: pointer;
-  background-color: #02441abe
+  background-color: var(--light-cyan)
 }
 
 
-/* Simple form styling */
 input, select, textarea {
   color: #222;
   padding: 0.5em;
@@ -49,7 +49,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Buttons */
 button {
-  background-color: #02441a;
+  background-color: var(--cyan);
   border: none;
   color: white;
   padding: 0.6em 1.2em;
@@ -60,10 +60,10 @@ button {
 }
 
 button:hover {
-  background-color: rgb(30, 76, 14)
+  background-color: var(--light-cyan)
 }
 
 .toggle {
-  font-size: 0.5rem;
-
+  margin: 10px;
+  font-size: 0.75rem;
 }

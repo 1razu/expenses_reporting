@@ -3,12 +3,32 @@
 * {
   outline: 1px solid red;
 }
+
+/* CSS HEX 
+--russian-violet: #0d0630ff;
+--space-cadet: #131c40ff;
+--yale-blue: #284063ff;
+--air-force-blue: #628695ff;
+--moonstone: #77a2a4ff;
+--cambridge-blue: #8bbeb2ff;
+--celadon: #b9dcb1ff;
+--mindaro: #e6f9afff;
+
 */
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  --dark-blue: #0d0630ff;
+  --blue: #131c40ff;
+  --lighter-blue: #284063ff;
+  --dark-cyan: #628695ff;
+  --cyan: #77a2a4ff;
+  --light-cyan: #8bbeb2ff;
+  --green: #b9dcb1ff;
+  --yellow: #e6f9afff;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -41,25 +61,6 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  display: flex;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 @media (prefers-color-scheme: light) {
   :root {
