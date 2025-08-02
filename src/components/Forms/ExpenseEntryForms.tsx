@@ -2,15 +2,22 @@ import { useState } from 'react';
 import styles from './ExpenseEntryForms.module.css';
 
 
-// CHOSING THE ENTRY METHOD
+//____________CHOSING THE ENTRY METHOD
+
 
 // Declaring possible entryMethods
 const entryMethods = {
-  form: ExpensesEntry,
-  file_import : ExpensesFileDrop
+  form: {
+    name:"Form",
+    component: ExpensesEntry},
+  file_import :{ 
+    name:"File import",
+    component: ExpensesFileDrop
+    }
 };
 
-// Exported component which renders chosen form
+// Component that renders chosen form
+// This is the only exported component
 
 export default function CurrentForm() {
     const [currentEntryMethod, setCurrentEntryMethod] = useState<"form" | "file_import">("form");
@@ -22,18 +29,21 @@ export default function CurrentForm() {
     };
 
     // the chosen component has to be stored in a variable so we can use React syntax in the return statement
-    const FormComponent = entryMethods[currentEntryMethod]
+    const FormComponent = entryMethods[currentEntryMethod]["component"]
 
     return (
     <div>
-        <button onClick={toggleButton}> Switch Method</button>
+        <div className='header'>
+            <h2>Add an expense</h2> 
+            <button className='toggle' onClick={toggleButton}> Add through {entryMethods[currentEntryMethod]["name"]}</button>
+        </div>
         <FormComponent />
     </div>)
 };
 
 
 
-// ENTRY METHOD COMPONENTS
+//____________ENTRY METHOD COMPONENTS
 
 
 // Files drop form
@@ -47,6 +57,8 @@ return(
 
 
 // Single entry Form 
+
+
 
 function ExpensesEntry() {
     return (

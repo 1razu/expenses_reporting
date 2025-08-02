@@ -7,8 +7,7 @@ function App() {
   return (
     <div className='main-content'>
       <NavBar></NavBar>
-      <h1>Expenses tracker</h1>
-      <h2>Add an expense</h2> 
+      <h1>Expenses tracker</h1> 
       <CurrentForm/>
     </div>
   )
