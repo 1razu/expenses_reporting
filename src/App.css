@@ -1,12 +1,28 @@
 /* Reset some default styles */
 .main-content {
-  padding-top: 60px; /* or however tall your navbar is */
+  width: 100%;
+  padding-top: 60px;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.content-columns {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.form-area {
+  flex: 0 0 40%;
+}
+
+.summary {
+  flex: 0 0 60%;
 }
 
 /* Body basics */

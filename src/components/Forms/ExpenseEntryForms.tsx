@@ -37,6 +37,7 @@ export default function CurrentForm() {
             <h2>Add an expense</h2> 
             <button className='toggle' onClick={toggleButton}> Add through {entryMethods[currentEntryMethod]["name"]}</button>
         </div>
+        <br />
         <FormComponent />
     </div>)
 };
@@ -51,7 +52,7 @@ export default function CurrentForm() {
 function ExpensesFileDrop() { 
 return(
     <div className={styles.dropzone}>
-        <p>Drop your CSV file here</p>
+        <p> Drop your CSV file here</p>
     </div>);
 }
 
@@ -63,7 +64,7 @@ return(
 function ExpensesEntry() {
     return (
 <form>
-  <label htmlFor="label">Label</label><br />
+  <label htmlFor="label"> Expense Label</label><br />
   <input type="label" id="label" name="label" required />
   
   <label htmlFor="cost">Cost</label><br />
