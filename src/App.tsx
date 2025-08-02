@@ -1,7 +1,7 @@
 import './App.css'
 import CurrentForm from './components/Forms/ExpenseEntryForms'
 import NavBar from './components/UI/Navigation/NavBar'
-
+import SummaryTable from './components/UI/Tables/SummaryTable'
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           </div>
           <div className='summary'>
           <h2>Summary</h2>
+          <SummaryTable />
           </div>
         </div>
       </div>
