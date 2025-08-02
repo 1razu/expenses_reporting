@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #02441a;
+  padding: 1rem 2rem;
+  width: 100%;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navList li {
+  display: inline; /* Or just rely on flex */
+}
+
+.navList a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
