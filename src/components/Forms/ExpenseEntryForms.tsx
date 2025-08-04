@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import styles from './ExpenseEntryForms.module.css';
+import type { TransactionItem } from '../../types/transactionTypes'
+import { useBalance} from '../../logic/balanceDetails';
 
 
 //____________CHOSING THE ENTRY METHOD
@@ -22,18 +24,18 @@ const entryMethods = {
 // This is the only exported component
 
 export default function CurrentForm() {
-    const [currentEntryMethod, setCurrentEntryMethod] = useState<"form" | "file_import">("form");
-    
-    const toggleButton = () => {
-        setCurrentEntryMethod(prev =>
-          prev === "form" ? "file_import" : "form"
-        );
-    };
+  const [currentEntryMethod, setCurrentEntryMethod] = useState<"form" | "file_import">("form");
+  
+  const toggleButton = () => {
+      setCurrentEntryMethod(prev =>
+        prev === "form" ? "file_import" : "form"
+      );
+  };
 
-    // the chosen component has to be stored in a variable so we can use React syntax in the return statement
-    const FormComponent = entryMethods[currentEntryMethod]["component"]
+  // the chosen component has to be stored in a variable so we can use React syntax in the return statement
+  const FormComponent = entryMethods[currentEntryMethod]["component"]
 
-    return (
+  return (
     <div>
         <div className={styles.header}>
             <h2>Add an expense</h2> 
@@ -62,23 +64,61 @@ return(
 // Single entry Form 
 
 
-
 function ExpensesEntry() {
-    return (
-<form>
-  <label htmlFor="label"> Expense Label</label><br />
-  <input type="label" id="label" name="label" required />
+  const { balanceDetails, updateBalanceDetails } = useBalance();
+  // Set up state to build an item
+  const [expenseItem, setExpenseItem] = useState({    
+      label: '',
+      cost: 0,
+      category: '',
+      date: ''
+  });
+
+  const itemModified = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setExpenseItem( prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('New expense Item:', expenseItem);
+    submittedTransactions.push(expenseItem);
+    setExpenseItem({
+      label: '',
+      cost: 0,
+      category: '',
+      date: ''
+    })
+    updateBalanceDetails(submittedTransactions)
+  };
+
   
-  <label htmlFor="cost">Cost</label><br />
-  <input type="number" id="cost" name="cost" required />
+  return (
+  <form onSubmit={handleSubmit}>
+      <label htmlFor="label"> Expense Label</label><br />
+      <input type="text" id="label" name="label" value={expenseItem.label} onChange={itemModified} required />
+      
+      <label htmlFor="cost">Cost</label><br />
+      <input type="number" id="cost" name="cost" value={expenseItem.cost} onChange={itemModified} required />
 
-  <label htmlFor="category">Category</label><br />
-  <input type="text" id="category" name="category" required />
+      <label htmlFor="category">Category</label><br />
+      <input type="text" id="category" name="category" value={expenseItem.category} onChange={itemModified} required />
 
-  <label htmlFor="date">date</label><br />
-  <input type="date" id="date" name="date" required />
+      <label htmlFor="date">date</label><br />
+      <input type="date" id="date" name="date" value={expenseItem.date} onChange={itemModified} required />
 
-  <button type="submit">Submit</button>
-</form>
-)
+      <button type="submit">Submit</button>
+    </form>
+  )
 };
+
+
+
+
+
+
+// Expense Items
+export const submittedTransactions: TransactionItem[] = [];

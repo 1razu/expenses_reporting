@@ -1,8 +1,8 @@
 // import { useState } from 'react';
-// import styles from './SummaryTable.module.css';
+// import styles from './Transactions.module.css';
 
 
-export default function SummaryTable() {
+export default function Transactions() {
     return (
     <table>
       <thead>

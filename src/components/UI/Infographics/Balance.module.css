@@ -1,0 +1,16 @@
+.header {
+    
+    text-align: right;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+
+}
+
+.sum {
+    text-align: end;
+    position: sticky;
+    padding-right : 30px;
+
+}
+

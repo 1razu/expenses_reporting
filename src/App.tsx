@@ -1,7 +1,8 @@
 import './App.css'
 import CurrentForm from './components/Forms/ExpenseEntryForms'
 import NavBar from './components/UI/Navigation/NavBar'
-import SummaryTable from './components/UI/Tables/SummaryTable'
+import Transactions from './components/UI/Tables/Transactions'
+import BalanceDetails from './components/UI/Infographics/Balance'
 
 function App() {
   return (
@@ -9,13 +10,14 @@ function App() {
     <NavBar />
       <div>
         <h1>Expenses tracker</h1> 
+        <BalanceDetails />
         <div className='content-columns'>
           <div className='form-area'>
             <CurrentForm />
           </div>
           <div className='summary'>
-          <h2>Summary</h2>
-          <SummaryTable />
+          <h2>Transactions</h2>
+          <Transactions />
           </div>
         </div>
       </div>
