@@ -21,7 +21,7 @@ function Balance(){
     return (
         <>
             <h3 className={styles.sum}>Balance</h3>
-            <h4 className={styles.sum}> {balanceDetails.balance} €</h4>
+            <h4 className={styles.sum} > {balanceDetails.balance} €</h4>
         </>
     );
 };

@@ -86,13 +86,16 @@ function ExpensesEntry() {
     e.preventDefault();
     console.log('New expense Item:', expenseItem);
     submittedTransactions.push(expenseItem);
+    console.log('Current transactions:',submittedTransactions)
+    console.log('Current balance details:',balanceDetails)
+    updateBalanceDetails(submittedTransactions)
     setExpenseItem({
       label: '',
       cost: 0,
       category: '',
       date: ''
     })
-    updateBalanceDetails(submittedTransactions)
+
   };
 
   
