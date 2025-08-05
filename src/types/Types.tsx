@@ -20,3 +20,13 @@ export type TransactionItem = {
 export type Props = {
   transaction: TransactionItem;
 };
+
+export type ExpensesProps = {
+  expenses: number;
+};
+
+export type BalanceValues = {
+  expenses: number,
+  income: number,
+  balance: number
+};

@@ -6,7 +6,8 @@ import type { AppProviderProps, GlobalState } from "../types/Types";
 // Initial state
 
 const initialState: GlobalState = {
-    transactions: [
+    transactions: []
+    /*
         {
             id: 1,
             label: 'dummy 1',
@@ -28,7 +29,7 @@ const initialState: GlobalState = {
             category: 'Dummy cat',
             date: "2022-02-02"
         }
-    ]
+    ] */
 }
 
 // Create context

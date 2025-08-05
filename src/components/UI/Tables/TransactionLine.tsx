@@ -1,6 +1,6 @@
 
 // import React from 'react'
-import type { TransactionItem, Props } from "../../../types/Types"
+import type { Props } from "../../../types/Types"
 
 
 export const TransactionLine = ({transaction}: Props) => {
@@ -13,5 +13,5 @@ export const TransactionLine = ({transaction}: Props) => {
         <td>{transaction.date}</td>
       </tr>
     </>
-  )
-}
+  );
+};

@@ -1,7 +1,7 @@
 import './App.css'
 import CurrentForm from './components/Forms/ExpenseEntryForms'
 import NavBar from './components/UI/Navigation/NavBar'
-import Transactions from './components/UI/Tables/Transactions'
+import Transactions from './components/UI/Tables/TransactionList'
 import BalanceDetails from './components/UI/Infographics/Balance'
 
 import { GlobalProvider } from './context/GlobalState';

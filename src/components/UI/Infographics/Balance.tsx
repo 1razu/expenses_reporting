@@ -1,48 +1,49 @@
 //import React from 'react';
-// import { useState } from 'react';
+import { useContext } from 'react';
+import type { ReactNode } from 'react';
 import styles from './Balance.module.css';
-import { useBalance} from '../../../logic/balanceDetails';
+import { GlobalContext } from '../../../context/GlobalState';
+import type {BalanceValues} from '../../../types/Types'
 
 
-export default function BalanceDetails(){
+
+export default function BalanceDetails():ReactNode{
+    const {transactions} = useContext(GlobalContext);  
+  
+    const amounts = transactions.map(transaction => transaction.cost);
+    
+    function balanceValues():BalanceValues{ 
+        let expenses = 0;
+        for (let i of amounts){ expenses += i }
+        
+        let income = 1000;
+        let balance = income - expenses;
+        return {
+            expenses: expenses,
+            income: income,
+            balance: balance
+        }
+    };
+    
+    function TotalExpenses(){
+        return <h4 className={styles.sum}>{ balanceValues().expenses }</h4>
+    };
+    function TotalIncome(){
+        return <h4 className={styles.sum}>{balanceValues().income}</h4>
+    };
+    function TotalBalance(){
+        return <h4 className={styles.sum}>{balanceValues().balance}</h4>
+    };
+
 
     return (
         <div className={styles.header}>
-            <Income />
-            <Expenses />
-            <Balance />
-        </div>
-    );
-};
-
-
-function Balance(){
-    const { balanceDetails, updateBalanceDetails } = useBalance();
-    return (
-        <>
-            <h3 className={styles.sum}>Balance</h3>
-            <h4 className={styles.sum} > {balanceDetails.balance} €</h4>
-        </>
-    );
-};
-
-
-function Income() {
-const { balanceDetails, updateBalanceDetails } = useBalance();
-    return (
-        <>
-            <h3 className={styles.sum}>Income</h3>
-            <h4 className={styles.sum}> {balanceDetails.income} €</h4>
-        </>
-    );
-}
-
-function Expenses() {
-const { balanceDetails, updateBalanceDetails } = useBalance();
-    return (
-        <>
+            <><h3 className={styles.sum}> Income</h3>
+            <TotalIncome /></>
             <h3 className={styles.sum}>Expenses</h3>
-            <h4 className={styles.sum}> {balanceDetails.expenses} €</h4>
-        </>
+            <TotalExpenses />
+            <h3 className={styles.sum}> Balance</h3>
+            <TotalBalance />
+        </div>
     );
 };
