@@ -68,6 +68,7 @@ function ExpensesEntry() {
   const { balanceDetails, updateBalanceDetails } = useBalance();
   // Set up state to build an item
   const [expenseItem, setExpenseItem] = useState({    
+      id: Date.now(),
       label: '',
       cost: 0,
       category: '',
@@ -84,12 +85,21 @@ function ExpensesEntry() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let newId = Math.floor(Math.random()*10000000);
+
+    setExpenseItem( prev => ({
+      ...prev,
+      id: newId,
+    }));
+
     console.log('New expense Item:', expenseItem);
+
+
     submittedTransactions.push(expenseItem);
     console.log('Current transactions:',submittedTransactions)
-    console.log('Current balance details:',balanceDetails)
     updateBalanceDetails(submittedTransactions)
     setExpenseItem({
+      id: Date.now(),
       label: '',
       cost: 0,
       category: '',
