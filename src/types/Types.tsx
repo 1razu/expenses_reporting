@@ -5,9 +5,6 @@ export type AppProviderProps = {
   children: ReactNode;
 };
 
-export type GlobalState = {
-  transactions: TransactionItem[];
-};
 
 export type TransactionItem = {
   id: number
@@ -15,6 +12,9 @@ export type TransactionItem = {
   cost: number;
   category: string;
   date: string;
+};
+export type TransactionItemsObject = {
+  transactions: TransactionItem[];
 };
 
 export type Props = {
@@ -30,3 +30,8 @@ export type BalanceValues = {
   income: number,
   balance: number
 };
+
+export type AppReducerActions = {
+  type: string
+  payload: any
+}

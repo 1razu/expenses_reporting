@@ -1,13 +1,17 @@
 
-// import React from 'react'
-import type { Props } from "../../../types/Types"
+import {useContext} from 'react';
+import type { Props } from "../../../types/Types";
+import styles from './TransactionLine.module.css';
+import { GlobalContext } from "../../../context/GlobalState";
 
 
 export const TransactionLine = ({transaction}: Props) => {
+  const { deleteItem } = useContext(GlobalContext);
+
   return (
     <>
         <tr>
-        <td>{transaction.label}</td>
+        <td>  <button className={styles.deleteButton} onClick={ () => deleteItem(transaction.id) }> X </button> {transaction.label}</td>
         <td>{transaction.cost}</td>
         <td>{transaction.category}</td>
         <td>{transaction.date}</td>

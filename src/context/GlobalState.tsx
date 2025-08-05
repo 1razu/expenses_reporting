@@ -1,13 +1,12 @@
 import { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import type { AppProviderProps, GlobalState } from "../types/Types";
+import type { AppProviderProps, TransactionItem, TransactionItemsObject } from "../types/Types";
 
 
 // Initial state
 
-const initialState: GlobalState = {
-    transactions: []
-    /*
+const initialTransactionsState:TransactionItemsObject = {
+    transactions: [
         {
             id: 1,
             label: 'dummy 1',
@@ -29,19 +28,37 @@ const initialState: GlobalState = {
             category: 'Dummy cat',
             date: "2022-02-02"
         }
-    ] */
+    ]
 }
 
 // Create context
-export const GlobalContext = createContext<GlobalState>(initialState);
+export const GlobalContext:any = createContext(initialTransactionsState);
 
 // Provider component
 
 export const GlobalProvider = ({ children }: AppProviderProps) => {
-    const [state, dispatch] = useReducer(AppReducer, initialState);
+    const [state, dispatch] = useReducer(AppReducer, initialTransactionsState);
+
+    //Actions
+    function deleteItem(id:number) {
+        console.log("deleted item: ",id)
+        dispatch({
+            type: 'DELETE_ITEM',
+            payload: id
+            });
+    };
+    function addItem(item:TransactionItem) {
+        console.log("added item: ",item.id)
+        dispatch({
+            type: 'ADD_ITEM',
+            payload: item
+            });
+    };
 
     return (<GlobalContext.Provider value={{
-        transactions: state.transactions
+        transactions: state.transactions,
+        deleteItem,
+        addItem
     }}>
         {children}
     </GlobalContext.Provider>);

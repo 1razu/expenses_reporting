@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './ExpenseEntryForms.module.css';
 import type { TransactionItem } from '../../types/Types'
-import { useBalance} from '../../logic/balanceDetails';
+import { GlobalContext } from '../../context/GlobalState';
+
+// import { useBalance} from '../../logic/balanceDetails';
 
 
 //____________CHOSING THE ENTRY METHOD
@@ -65,7 +67,9 @@ return(
 
 
 function ExpensesEntry() {
-  const { balanceDetails, updateBalanceDetails } = useBalance();
+  
+  const { addItem } = useContext(GlobalContext); 
+  
   // Set up state to build an item
   const [expenseItem, setExpenseItem] = useState({    
       id: Date.now(),
@@ -85,19 +89,9 @@ function ExpensesEntry() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let newId = Math.floor(Math.random()*10000000);
-
-    setExpenseItem( prev => ({
-      ...prev,
-      id: newId,
-    }));
-
+    addItem(expenseItem);
     console.log('New expense Item:', expenseItem);
 
-
-    submittedTransactions.push(expenseItem);
-    console.log('Current transactions:',submittedTransactions)
-    updateBalanceDetails(submittedTransactions)
     setExpenseItem({
       id: Date.now(),
       label: '',

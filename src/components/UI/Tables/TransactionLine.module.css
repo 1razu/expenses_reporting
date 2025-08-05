@@ -18,3 +18,12 @@ th {
 tr:nth-child(even) {
   background-color: #fafafa;
 }
+
+.deleteButton {
+  font-size: xx-small;
+  padding: 0.6em;
+  background-color: #ad0303;
+}
+.deleteButton:hover {
+  background-color: #d52d2d;
+}

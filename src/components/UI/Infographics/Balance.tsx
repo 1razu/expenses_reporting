@@ -10,14 +10,16 @@ import type {BalanceValues} from '../../../types/Types'
 export default function BalanceDetails():ReactNode{
     const {transactions} = useContext(GlobalContext);  
   
+    // Extracts transaction amounts from Global Context 
     const amounts = transactions.map(transaction => transaction.cost);
     
+    // Returns an object with expenses, income and balance
     function balanceValues():BalanceValues{ 
         let expenses = 0;
         for (let i of amounts){ expenses += i }
         
         let income = 1000;
-        let balance = income - expenses;
+        let balance = income + expenses;
         return {
             expenses: expenses,
             income: income,
@@ -25,6 +27,7 @@ export default function BalanceDetails():ReactNode{
         }
     };
     
+    // KPI components
     function TotalExpenses(){
         return <h4 className={styles.sum}>{ balanceValues().expenses }</h4>
     };
@@ -40,10 +43,10 @@ export default function BalanceDetails():ReactNode{
         <div className={styles.header}>
             <><h3 className={styles.sum}> Income</h3>
             <TotalIncome /></>
-            <h3 className={styles.sum}>Expenses</h3>
-            <TotalExpenses />
-            <h3 className={styles.sum}> Balance</h3>
-            <TotalBalance />
+            <><h3 className={styles.sum}>Expenses</h3>
+            <TotalExpenses /></>
+            <><h3 className={styles.sum}> Balance</h3>
+            <TotalBalance /></>
         </div>
     );
 };
