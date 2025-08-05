@@ -83,7 +83,7 @@ function ExpensesEntry() {
     const { name, value } = e.target;
     setExpenseItem( prev => ({
       ...prev,
-      [name]: value,
+      [name]: name === 'cost' ? Number(value) : value,
     }));
   };
 
