@@ -1,6 +1,6 @@
 //import { submittedTransactions } from '../components/Forms/ExpenseEntryForms'
 import { useState } from 'react';
-import type { TransactionItem } from '../types/transactionTypes'
+import type { TransactionItem } from '../types/Types'
 
 
 export function useBalance() {

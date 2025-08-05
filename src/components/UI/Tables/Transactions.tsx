@@ -1,9 +1,17 @@
-// import { useState } from 'react';
 // import styles from './Transactions.module.css';
+import { TransactionLine } from './TransactionLine';
+
+import { useContext } from 'react';
+
+import { GlobalContext } from "../../../context/GlobalState";
 
 
 export default function Transactions() {
-    return (
+  const {transactions} = useContext(GlobalContext);  
+  
+  console.log(transactions);
+
+  return (
     <table>
       <thead>
         <tr>
@@ -14,12 +22,11 @@ export default function Transactions() {
         </tr>
       </thead>
       <tbody>
-          <tr>
-            <td > Rent</td>
-            <td> 900€</td>
-            <td>Fixed Costs </td>
-            <td>Aug 1st 2024</td>
-          </tr>
+        {transactions.map(transaction => 
+          (
+            <TransactionLine key= {transaction.id} transaction={transaction} />
+          )
+         )}
       </tbody>
     </table>
   );

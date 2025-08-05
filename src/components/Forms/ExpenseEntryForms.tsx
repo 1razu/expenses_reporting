@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './ExpenseEntryForms.module.css';
-import type { TransactionItem } from '../../types/transactionTypes'
+import type { TransactionItem } from '../../types/Types'
 import { useBalance} from '../../logic/balanceDetails';
 
 
