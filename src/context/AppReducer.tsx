@@ -1,8 +1,9 @@
-import type { AppReducerActions } from '../types/Types'
+import type { AppReducerActions, TransactionItemsObject } from '../types/Types'
+
+import type { Reducer } from "react";
 
 
-
-export default (state:any, action: AppReducerActions) => {
+const AppReducer: Reducer<TransactionItemsObject, AppReducerActions> = (state:TransactionItemsObject, action:AppReducerActions) => {
     switch(action.type) {
         case 'DELETE_ITEM':
             return{
@@ -18,3 +19,5 @@ export default (state:any, action: AppReducerActions) => {
             return state;
     }
 };
+
+export default AppReducer

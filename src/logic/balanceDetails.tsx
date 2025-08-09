@@ -1,9 +1,11 @@
+/*
+
 //import { submittedTransactions } from '../components/Forms/ExpenseEntryForms'
 import { useState } from 'react';
 import type { TransactionItem } from '../types/Types'
 
 
-export function useBalance() {
+function useBalance() {
     const [balanceDetails, setBalanceDetails] = useState({
         income : 0,
         expenses : 0,
@@ -26,3 +28,4 @@ export function useBalance() {
 
 
 
+*/

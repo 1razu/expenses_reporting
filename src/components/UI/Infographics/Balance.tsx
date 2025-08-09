@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import type { ReactNode } from 'react';
 import styles from './Balance.module.css';
 import { GlobalContext } from '../../../context/GlobalState';
-import type {BalanceValues} from '../../../types/Types'
+import type {BalanceValues, TransactionItem} from '../../../types/Types'
 
 
 
@@ -11,7 +11,7 @@ export default function BalanceDetails():ReactNode{
     const {transactions} = useContext(GlobalContext);  
   
     // Extracts transaction amounts from Global Context 
-    const amounts = transactions.map(transaction => transaction.cost);
+    const amounts = transactions.map((t:TransactionItem) => t.cost);
     
     // Returns an object with expenses, income and balance
     function balanceValues():BalanceValues{ 
@@ -19,7 +19,7 @@ export default function BalanceDetails():ReactNode{
         for (let i of amounts){ expenses += i }
         
         let income = 1000;
-        let balance = income + expenses;
+        let balance = income - expenses;
         return {
             expenses: expenses,
             income: income,
@@ -29,10 +29,10 @@ export default function BalanceDetails():ReactNode{
     
     // KPI components
     function TotalExpenses(){
-        return <h4 className={styles.sum}>{ balanceValues().expenses }</h4>
+        return <h4 className={styles.sum}> - { balanceValues().expenses }</h4>
     };
     function TotalIncome(){
-        return <h4 className={styles.sum}>{balanceValues().income}</h4>
+        return <h4 className={styles.sum}> + {balanceValues().income}</h4>
     };
     function TotalBalance(){
         return <h4 className={styles.sum}>{balanceValues().balance}</h4>

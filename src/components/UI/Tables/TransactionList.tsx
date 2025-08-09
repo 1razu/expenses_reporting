@@ -5,9 +5,11 @@ import { useContext } from 'react';
 
 import { GlobalContext } from "../../../context/GlobalState";
 
+import type {TransactionItemsObject} from '../../../types/Types';
+
 
 export default function TransactionList() {
-  const {transactions} = useContext(GlobalContext);  
+  const {transactions}:TransactionItemsObject = useContext(GlobalContext);  
   
   console.log(transactions);
 
@@ -22,9 +24,9 @@ export default function TransactionList() {
         </tr>
       </thead>
       <tbody>
-        {transactions.map(transaction => 
+        {transactions.map(t => 
           (
-            <TransactionLine key= {transaction.id} transaction={transaction} />
+            <TransactionLine key= {t.id} transaction={t} />
           )
          )}
       </tbody>

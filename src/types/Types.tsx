@@ -1,10 +1,19 @@
 import type { ReactNode } from "react";
 
+// React Types
 
 export type AppProviderProps = {
   children: ReactNode;
 };
 
+
+
+// Custom Types
+
+export type AppReducerActions = {
+  type: string
+  payload: any
+}
 
 export type TransactionItem = {
   id: number
@@ -13,13 +22,19 @@ export type TransactionItem = {
   category: string;
   date: string;
 };
+
+
+
 export type TransactionItemsObject = {
   transactions: TransactionItem[];
 };
 
-export type Props = {
+export type TransactionItemProps = {
   transaction: TransactionItem;
 };
+
+
+
 
 export type ExpensesProps = {
   expenses: number;
@@ -31,7 +46,3 @@ export type BalanceValues = {
   balance: number
 };
 
-export type AppReducerActions = {
-  type: string
-  payload: any
-}
