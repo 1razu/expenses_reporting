@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import type { ReactNode } from 'react';
 import styles from './Balance.module.css';
 import { GlobalContext } from '../../../context/GlobalState';
-import type {BalanceValues, TransactionItem} from '../../../types/Types'
+import type {BalanceValues, TransactionItemType} from '../../../types/Types'
 
 
 
@@ -11,7 +11,7 @@ export default function BalanceDetails():ReactNode{
     const {transactions} = useContext(GlobalContext);  
   
     // Extracts transaction amounts from Global Context 
-    const amounts = transactions.map((t:TransactionItem) => t.cost);
+    const amounts = transactions.map((t:TransactionItemType) => t.amount);
     
     // Returns an object with expenses, income and balance
     function balanceValues():BalanceValues{ 

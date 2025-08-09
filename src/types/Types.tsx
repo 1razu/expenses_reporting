@@ -15,10 +15,11 @@ export type AppReducerActions = {
   payload: any
 }
 
-export type TransactionItem = {
-  id: number
+export type TransactionItemType = {
+  id: number;
+  type: string;
   label: string;
-  cost: number;
+  amount: number;
   category: string;
   date: string;
 };
@@ -26,11 +27,11 @@ export type TransactionItem = {
 
 
 export type TransactionItemsObject = {
-  transactions: TransactionItem[];
+  transactions: TransactionItemType[];
 };
 
 export type TransactionItemProps = {
-  transaction: TransactionItem;
+  transaction: TransactionItemType;
 };
 
 

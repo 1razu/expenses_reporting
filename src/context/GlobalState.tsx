@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import type { AppProviderProps, TransactionItem, TransactionItemsObject } from "../types/Types";
+import type { AppProviderProps, TransactionItemType, TransactionItemsObject } from "../types/Types";
 
 
 
@@ -49,7 +49,7 @@ export const GlobalProvider = ({ children }: AppProviderProps) => {
             payload: id
             });
     };
-    function addItem(item:TransactionItem) {
+    function addItem(item:TransactionItemType) {
         console.log("added item: ",item.id)
         dispatch({
             type: 'ADD_ITEM',
