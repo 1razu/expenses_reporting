@@ -85,10 +85,10 @@ function IncomeEntry() {
 
     setTransactionItem({
       id: Date.now(),
-      type: "expense",
-      label: '',
+      type: "income",
+      label: dateFormat.monthShortString+' salary',
       amount: 0,
-      category: '',
+      category: 'Salary',
       date: ''
     })
   };
@@ -121,6 +121,7 @@ function ExpensesEntry() {
   // Set up state to build an item
   const [transactionItem, setTransactionItem] = useState({    
       id: Date.now(),
+      type: "expense",
       label: '',
       amount: 0,
       category: '',
@@ -142,6 +143,7 @@ function ExpensesEntry() {
 
     setTransactionItem({
       id: Date.now(),
+      type: "expense",
       label: '',
       amount: 0,
       category: '',

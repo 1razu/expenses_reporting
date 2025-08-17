@@ -8,28 +8,30 @@ import type { AppProviderProps, TransactionItemType, TransactionItemsObject } fr
 
 const TransactionsState:TransactionItemsObject = {
     transactions: [
-/*        {
+{
             id: 1,
+            type: "expense",
             label: 'dummy 1',
-            cost: -100,
+            amount: 100,
             category: 'Dummy cat',
-            date: "2022-01-01"
+            date: "2025-08-01"
         },
         {
             id: 2,
+            type: "expense",
             label: 'dummy 2',
-            cost: -200,
+            amount: 200,
             category: 'Dummy cat',
-            date: "2022-02-02"
+            date: "2025-08-02"
         },
         {
             id: 3,
-            label: 'dummy 3',
-            cost: -200,
-            category: 'Dummy cat',
-            date: "2022-02-02"
+            type: "income",
+            label: 'Aug Salary',
+            amount: 2000,
+            category: 'Salary',
+            date: "2025-08-02"
         }
-*/
     ]
 }
 

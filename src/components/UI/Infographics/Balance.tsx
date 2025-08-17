@@ -10,15 +10,23 @@ import type {BalanceValues, TransactionItemType} from '../../../types/Types'
 export default function BalanceDetails():ReactNode{
     const {transactions} = useContext(GlobalContext);  
   
-    // Extracts transaction amounts from Global Context 
-    const amounts = transactions.map((t:TransactionItemType) => t.amount);
+    // Extracts expense transaction amounts from Global Context 
+    const expenseAmounts = transactions
+        .filter((t: TransactionItemType) => t.type === "expense")
+        .map((t: TransactionItemType) => t.amount);
     
+    const incomeAmounts = transactions
+        .filter((t: TransactionItemType) => t.type === "income")
+        .map((t: TransactionItemType) => t.amount);
+
     // Returns an object with expenses, income and balance
     function balanceValues():BalanceValues{ 
         let expenses = 0;
-        for (let i of amounts){ expenses += i }
+        let income = 0;
         
-        let income = 1000;
+        for (let i of expenseAmounts){ expenses += i }
+        for (let i of incomeAmounts){ income += i }
+        
         let balance = income - expenses;
         return {
             expenses: expenses,
